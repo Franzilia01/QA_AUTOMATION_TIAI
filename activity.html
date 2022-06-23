@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<title>CATUNCAN_FRANZ - TECH ACTIVITY</title>
+<html>
+    <body>
+        <h1> CATUNCAN, FRANZ - Technical Activity</h1>
+        <h3> TELUS (QA AUTOMATION - TIAI)</h3>
+        <form name="myForm" onsubmit="return validateForm()" action="#">
+            <label>FULL NAME:&nbsp;
+                <input type="text" name="fullName" id="fullName" maxlength="100" required placeholder="Full Name..."></input>
+            </label>
+            <br>
+            <label>EMAIL ADDRESS:&nbsp;
+                <input type="email" name="emailAddress" id="emailAddress" placeholder="Email Address..."></input>
+            </label>
+            <br>
+            <label>FLEXIBLE? &nbsp;
+                <input type="checkbox" name="flexible" id="flexible"></input>
+            </label>
+            <br>
+            <label>DAYS FOR AVAILABILITY &nbsp;
+                <input type="text" name="daysAvail" id="daysAvail" placeholder="Days for Availability..."></input>
+            </label>
+            <br>        
+            <br>        
+            <input type="submit" value="Save"></input>
+        </form>
+        <script>
+            function validateForm(){
+                var name = document.getElementById("fullName").value;
+                var flexible = document.getElementById("flexible");
+                var daysAvail = document.getElementById("daysAvail").value;
+                var emailAddress = document.getElementById("emailAddress").value;
+
+                // Check flexible checkbox
+                var daysAvailRegex = new RegExp("^[0-9]*$");
+                var isDaysAvailValid = daysAvailRegex.test(daysAvail);
+                if (flexible.checked == true) {
+                    if (daysAvail == "" || daysAvail==null){
+                        alert("Provide days for availability!");
+                        return false;
+                    } else if (!isDaysAvailValid) {
+                        alert("Only whole numbers are allowed for days for availability!");
+                        return false;
+                    } else {
+
+                    }
+                } else {
+
+                } // end of if/else for checkbox
+
+                // Check email
+                var emailRegex = new RegExp("^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$");
+                var isEmailValid = emailRegex.test(emailAddress);
+                if (emailAddress != "" && emailAddress != null) {
+                    if (!isEmailValid){
+                        alert("Please enter a valid email address!");
+                        return false;
+                    } else {
+
+                    }
+                } else {
+
+                } // end of if/else for email
+            }
+        </script>
+    </body>
+</html>
